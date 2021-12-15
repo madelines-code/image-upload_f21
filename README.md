@@ -30,7 +30,7 @@ $ rails g devise_token_auth:install User api/auth
 
 - add extend Devise::Models to users
 
-```
+```ruby
 class User < ActiveRecord::Base
   extend Devise::Models
 
@@ -62,4 +62,8 @@ class AddTrackableToUsers < ActiveRecord::Migration[6.0]
   end
 end
 
+```
+
+```
+$ rails db:migrate
 ```
