@@ -10,23 +10,50 @@ const AuthProvider = (props) => {
   // a null user is a user that is not logged in
   const [user, setUser] = useState(null);
 
-  const handleRegister = async () => {
+  const handleRegister = async (user, navigate) => {
     // axios call to register users (interacting with DB)
-    // setUser
-    console.log("handleRegister");
+    try {
+      let res = await axios.post("api/auth", user);
+      setUser(res.data.data);
+      navigate("/protected");
+      // naviagate to a certain page
+    } catch (err) {
+      console.log(err.response);
+      alert("error occured registring user");
+    }
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (user, navigate) => {
     // axios call to login users (interacting with DB)
-    // setUser
-    setUser({ email: "some email" });
-    console.log("handleLogin");
+    try {
+      let res = await axios.post("api/auth/sign_in", user);
+      setUser(res.data.data);
+      // let headers = res.headers;
+      // axios.defaults.headers.common["access-token"] = headers["access-token"];
+      // axios.defaults.headers.common["token-type"] = headers["token-type"];
+      // axios.defaults.headers.common["client"] = headers["client"];
+      // axios.defaults.headers.common["expiry"] = headers["expiry"];
+      // axios.defaults.headers.common["uid"] = headers["uid"];
+      navigate("/protected");
+      // naviagate to a certain page
+    } catch (err) {
+      console.log(err.response);
+      alert("error occured registring user");
+    }
   };
 
-  const handleLogout = async () => {
+  const handleLogout = async (y) => {
     // axios call to logout users (interacting with DB)
-    setUser(null);
-    console.log("handleLogout");
+    try {
+      let res = await axios.delete("/api/auth/sign_out");
+      console.log(res);
+      setUser(null);
+      y("/login");
+    } catch (err) {
+      console.log(err.response);
+      alert("error occured registring user");
+    }
+    // y bad name for tutorial sake
   };
 
   return (
