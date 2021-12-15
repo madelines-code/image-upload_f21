@@ -67,3 +67,39 @@ end
 ```
 $ rails db:migrate
 ```
+
+### React Router Setup
+
+install react-router-dom
+
+```
+$ yarn add react-router-dom
+```
+
+setup index.js
+
+```javascript
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
+```
+
+add routes in App.js
+
+```javascript
+import { Route, Routes } from "react-router-dom";
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/public" element={<Public />} />
+      <Route path="/protected" element={<Protected />} />
+    </Routes>
+  );
+}
+```
