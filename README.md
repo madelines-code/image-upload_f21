@@ -5,6 +5,19 @@ It is Rails 6 API app with React frontend.
 
 ### Setup instructions
 
+- clone this repo
+
+```
+$ git clone git@github.com:jimibue/starter-w21-router6.git <project_name>
+ cd <project_name>
+```
+
+- rename database in database.yml
+- bundle, create, migrate, seed db
+- cd client and run yarn
+- remove git remote
+- add new git remote
+
 TODO
 
 ### Libraries
