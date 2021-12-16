@@ -5,6 +5,7 @@ import Protected from "./pages/Protected";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 import RequireAuth from "./components/RequireAuth";
+import Navbar from "./components/Navbar";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 

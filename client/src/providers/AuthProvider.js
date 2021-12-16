@@ -28,30 +28,25 @@ const AuthProvider = (props) => {
     try {
       let res = await axios.post("api/auth/sign_in", user);
       setUser(res.data.data);
-      // let headers = res.headers;
-      // axios.defaults.headers.common["access-token"] = headers["access-token"];
-      // axios.defaults.headers.common["token-type"] = headers["token-type"];
-      // axios.defaults.headers.common["client"] = headers["client"];
-      // axios.defaults.headers.common["expiry"] = headers["expiry"];
-      // axios.defaults.headers.common["uid"] = headers["uid"];
+
       navigate("/protected");
       // naviagate to a certain page
     } catch (err) {
       console.log(err.response);
-      alert("error occured registring user");
+      alert("error occured logining in user");
     }
   };
 
   const handleLogout = async (y) => {
     // axios call to logout users (interacting with DB)
     try {
+      // destroy token on backend
       let res = await axios.delete("/api/auth/sign_out");
-      console.log(res);
       setUser(null);
       y("/login");
     } catch (err) {
       console.log(err.response);
-      alert("error occured registring user");
+      alert("error occured loginout user");
     }
     // y bad name for tutorial sake
   };
