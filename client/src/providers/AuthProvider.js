@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export const AuthContext = React.createContext();
@@ -7,6 +7,21 @@ export const AuthContext = React.createContext();
 export const AuthConsumer = AuthContext.Consumer;
 
 const AuthProvider = (props) => {
+  // const getUser = async () => {
+  //   if (user || !localStorage.getItem("access-token")) {
+  //     return;
+  //   }
+  //   try {
+  //     const res = await axios.get("/api/auth/validate_token");
+  //     console.log(res.data.data);
+  //     setUser(res.data.data);
+  //   } catch (err) {
+  //     return;
+  //   }
+  // };
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
   // a null user is a user that is not logged in
   const [user, setUser] = useState(null);
 
@@ -50,7 +65,7 @@ const AuthProvider = (props) => {
     }
     // y bad name for tutorial sake
   };
-
+  console.log("user", user);
   return (
     <AuthContext.Provider
       value={{
