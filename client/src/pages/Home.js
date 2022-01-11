@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import FilePondDemo from "../components/FilePondDemo";
 import { AuthContext } from "../providers/AuthProvider";
 const Home = () => {
   const auth = useContext(AuthContext);
@@ -57,6 +58,7 @@ const Home = () => {
       <code>{JSON.stringify(auth)}</code>
       <hr />
       {renderCat()}
+      <FilePondDemo/>
     </div>
   );
 };
